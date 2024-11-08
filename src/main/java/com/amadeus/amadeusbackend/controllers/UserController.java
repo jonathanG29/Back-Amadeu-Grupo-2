@@ -3,6 +3,7 @@ package com.amadeus.amadeusbackend.controllers;
 import com.amadeus.amadeusbackend.models.User;
 import com.amadeus.amadeusbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,14 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<User> saveUser (@RequestBody User user) {
-        return ResponseEntity.ok(userService.saveUser(user));
+
+        try {
+            User savedUsuario = userService.saveUser(user);
+            return new ResponseEntity<>(savedUsuario, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/user")
