@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1")
 public class UserController {
 
@@ -18,7 +19,6 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<User> saveUser (@RequestBody User user) {
-
         try {
             User savedUsuario = userService.saveUser(user);
             return new ResponseEntity<>(savedUsuario, HttpStatus.OK);
@@ -30,6 +30,7 @@ public class UserController {
 
     @GetMapping("/user")
     public ResponseEntity<List<User>> userList(){
+
         return ResponseEntity.ok(userService.userList());
     }
 
@@ -44,7 +45,10 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @GetMapping("/user/{name}")
+    public ResponseEntity<User> findByName(@PathVariable String name){
+        return ResponseEntity.ok(userService.findByName(name));
+    }
 
 
 }

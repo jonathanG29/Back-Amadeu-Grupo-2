@@ -12,8 +12,9 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
+    //Metodo para guardar información del usuario
     public User saveUser(User usuario) {
 
         //Verificar si el usuario existe
@@ -30,6 +31,10 @@ public class UserService {
         return userRepository.save(usuario);
     }
 
+    public User getUser(Long id) {
+        return userRepository.findById(id).get();
+    }
+
     public List<User> userList (){
         return userRepository.findAll();
     }
@@ -40,6 +45,10 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public User findByName (String name){
+        return userRepository.findByName(name);
     }
 
 
