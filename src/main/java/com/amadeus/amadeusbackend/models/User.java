@@ -1,6 +1,7 @@
 package com.amadeus.amadeusbackend.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //Buscar anotar especifico para que el campo no sea vacio
+    @NotBlank
     @NonNull
     private String name;
 
-    //Buscar anotar especifico para email
+    @NotBlank
     @NonNull
     private String email;
 
