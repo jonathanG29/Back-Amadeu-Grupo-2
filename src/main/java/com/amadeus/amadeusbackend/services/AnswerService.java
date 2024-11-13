@@ -10,15 +10,9 @@ public class AnswerService {
 
     @Autowired
     private AnswerRepository answerRepository;
-    @Autowired
-    private CalculateDestinyService calculateDestinyService;
 
     public Answer saveAnswer(Answer answer) {
-
-        calculateDestinyService.CalculateDestiny(answer);
-
-        return answerRepository.save(answer);
-
+        answerRepository.save(answer);
+        return answer;
     }
-
 }
