@@ -28,5 +28,4 @@ public class Result {
 
     @OneToOne
     private Answer answer;
-
 }
