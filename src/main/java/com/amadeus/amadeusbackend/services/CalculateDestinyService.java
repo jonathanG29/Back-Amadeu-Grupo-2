@@ -1,17 +1,23 @@
 package com.amadeus.amadeusbackend.services;
 
-
+import com.amadeus.amadeusbackend.contracts.request.DestinationRequest;
+import com.amadeus.amadeusbackend.contracts.response.DestinationResponse;
 import com.amadeus.amadeusbackend.models.Answer;
+import com.amadeus.amadeusbackend.models.User;
+import com.amadeus.amadeusbackend.repositories.UserRepository;
 import com.amadeus.amadeusbackend.models.Result;
+import com.amadeus.amadeusbackend.repositories.ResultRepository;
+import com.amadeus.amadeusbackend.repositories.AnswerRepository;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@Data
 public class CalculateDestinyService {
-
-    Long idUsuario;
 
     String pDestino = "";
     String pClimatica = "";
@@ -22,17 +28,25 @@ public class CalculateDestinyService {
     String destinoA = "";
     String destinoE = "";
 
-    public void CalculateDestiny(Answer answer) {
+    @Autowired
+    ResultRepository resultRepository;
+    @Autowired
+    AnswerRepository answerRepository;
 
-        idUsuario = answer.getUserId();
+    @Autowired
+    UserRepository userRepository;
 
-        pDestino = answer.getDestiny();
-        pClimatica = answer.getWeather();
-        dViaje = answer.getTravelTime();
-        edad = answer.getAge();
-        pActividad = answer.getActivity();
-        pAlojamiento = answer.getHousing();
+    public DestinationResponse CalculateDestiny(DestinationRequest destinationRequest) {
 
+        //Recuperar el valor de cada variable del objeto recibido calculoDestino
+        pDestino = destinationRequest.getDestino();
+        pClimatica = destinationRequest.getClimatica();
+        dViaje = destinationRequest.getViaje();
+        edad = destinationRequest.getEdad();
+        pActividad = destinationRequest.getActividad();
+        pAlojamiento = destinationRequest.getAlojamiento();
+
+        //Mapa de respuestas y destinos
         Map<String, String[]> destinos = new HashMap<>();
         destinos.put("Playa-Caluroso-1-2 semanas-Menos de 30 años-Deportes y Aventuras-Hostal o Albergue", new String[]{"Tulum", "Ibiza"});
         destinos.put("Playa-Caluroso-1-2 semanas-Menos de 30 años-Relax y Bienestar-Hotel de Lujo", new String[]{"Playa del Carmen", "Santori"});
@@ -57,22 +71,46 @@ public class CalculateDestinyService {
         String key = String.join("-", pDestino, pClimatica, dViaje, edad, pActividad, pAlojamiento);
         String[] destino = destinos.getOrDefault(key, new String[]{"Bora Bora", "Dubái"});
 
+        //Guardar los destinos calculados de acuerdo a las respuestas
         destinoA = destino[0];
         destinoE = destino[1];
 
         System.out.println("Destino A: " + destinoA);
         System.out.println("Destino E: " + destinoE);
 
+        //Instancias de los modelos Result, Answer y Destinos
+        DestinationResponse destinationResponse = new DestinationResponse();
         Result result = new Result();
+        Answer answer = new Answer();
 
+        //Setear los destinos resultantes en el objeto (contracts-response)Destinos
+        destinationResponse.setDestinoA(destinoA);
+        destinationResponse.setDestinoE(destinoE);
+
+        //Setear los destinos resultantes en el objeto (models)Result
         result.setCityAmerica(destinoA);
         result.setCityEurope(destinoE);
-        result.setIdUser(idUsuario);
+
+        //Buscar el usuario por el id del objeto calculoDestino
+        User user = userRepository.findById(destinationRequest.getUserId()).get();
+
+        //invocar el metodo calcularDestinoToAnswer de la clase Answer
+        //Se le envían los parámetros calculoDestino y user
+        answer = answer.destinationRequestToAnswer(destinationRequest, user);
+
+        //Guardar en la base de datos el objeto Answer
+        answerRepository.save(answer);
+
+        //Setear el objeto Answer en el objeto Result-Relación OneToOne
         result.setAnswer(answer);
 
+        //Guardar en la base de datos el objeto Result
+        resultRepository.save(result);
 
+        //Devuelve el objeto Destinos para enviar al front
+        return destinationResponse;
     }
 
-
-
 }
+
+

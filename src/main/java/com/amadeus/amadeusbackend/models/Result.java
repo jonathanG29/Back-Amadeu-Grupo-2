@@ -1,11 +1,11 @@
 package com.amadeus.amadeusbackend.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Data
@@ -18,15 +18,14 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
+    @NotBlank
     private String cityAmerica;
+
+    @NotNull
+    @NotBlank
     private String cityEurope;
 
     @OneToOne
     private Answer answer;
-
-    //TODO: Falta relación con la tabla User (uno a muchos)
-//    @OneToMany
-//    @JoinColumn(name = "id")
-//    private List <User> users;
-    private long IdUser;
 }

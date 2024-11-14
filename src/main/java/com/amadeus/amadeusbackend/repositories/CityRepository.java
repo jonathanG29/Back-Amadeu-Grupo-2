@@ -1,11 +1,12 @@
 package com.amadeus.amadeusbackend.repositories;
 
-import com.amadeus.amadeusbackend.models.User;
+import com.amadeus.amadeusbackend.models.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface CityRepository extends JpaRepository<City, Long> {
 
-    User findByName(String name);
+    City findBynombreDestino(String name);
+
 }
