@@ -148,3 +148,4 @@ Modelos que no se persisten en la base de datos, utilizados para conexión del b
 ## 4. Modelos de clases
 ![diagramaClases](https://github.com/user-attachments/assets/0b12714e-1802-4e27-bd1f-bd12cecde2cf)
 
+
