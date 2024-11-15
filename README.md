@@ -149,3 +149,48 @@ Modelos que no se persisten en la base de datos, utilizados para conexión del b
 ![diagramaClases](https://github.com/user-attachments/assets/0b12714e-1802-4e27-bd1f-bd12cecde2cf)
 
 
+## 5. Script tabla cities_bd
+```
+INSERT INTO cities 
+VALUES
+(1,'Salbutes', 'América','Español', '../../../assets/img/PlayaDelCarmen.jpg', 'Chichén-Itzá', 'Playa del Carmen', 'México'),
+(2,'Hummus de Fava', 'Europa','Griego', '../../../assets/img/Santorini.jpg', 'Oia', 'Santorini', 'Grecia'),	  
+(3,'Ceviche de Pescado', 'América','Español', '../../../assets/img/Tulum.jpg', 'Cenote Calavera', 'Tulum', 'México'),
+(4,'Sofrit pagès', 'Europa','Castellano/Catalán', '../../../assets/img/ibiza.jpg', 'Islote Es Vedrá', 'Ibiza', 'España'),
+(5,'Saimin', 'América','Ingles/Hawaiano', '../../../assets/img/Honolulu.jpg', 'Playa Hapuna', 'Honolulu', 'Hawái'),
+(6,'Aljotta', 'Europa','Ingles/Maltés', '../../../assets/img/Malta.jpg', 'La Valeta', 'Malta', 'Malta'),
+(7,'Cazuela de Mariscos', 'América','Español', '../../../assets/img/Cartagena.jpg', 'Castillo San Felipe', 'Cartagena', 'Colombia'),
+(8,'Pa amb tomàquet', 'Europa','Castellano/Catalán', '../../../assets/img/Barcelona.jpg', 'Sagrada Familia', 'Barcelona', 'España'),
+(9,'Mofongo', 'América','Español', '../../../assets/img/SanJuan.jpg', 'Viejo San Juan', 'San Juan', 'Puerto Rico'),
+(10,'La socca', 'Europa','Frances', '../../../assets/img/niza.jpg', 'Vielle Ville', 'Niza', 'Francia'),
+(11,'Feijoada', 'América','Portugués', '../../../assets/img/RioDeJaneiro.jpg', 'Cristo Redentor', 'Río de Janeiro', 'Brasil'),
+(12,'Pasteles de Belem', 'Europa','Portugués', '../../../assets/img/lisboa.jpg', 'Tranvía 28', 'Lisboa', 'Portugal'),
+(13,'Bandera Dominicana', 'América','Español', '../../../assets/img/puntaCana.jpg', 'Playa Bávaro', 'Punta Cana', 'Republica Dominicana'),
+(14,'Cataplana', 'Europa','Portugués', '../../../assets/img/algarve.jpg', 'Tavira', 'Algarve', 'Portugal'),
+(15,'Cazuela de Centolla', 'América','Español', '../../../assets/img/ushuaia.jpg', 'Montes Martial', 'Ushuaia', 'Argentina'),
+(16,'Sopa de Cordero', 'Europa','Islandés', '../../../assets/img/reykjavik.jpg', 'Hallgrimskirkja', 'Reykjavik', 'Islandia'),
+(17,'Parrilla', 'América','Ingles', '../../../assets/img/Aspen.jpg', 'Aspen Mountain', 'Aspen', 'EE.UU'),
+(18,'Wiener Schnitzel', 'Europa','Alemán', '../../../assets/img/innsbruck.jpg', 'Hofkkirche', 'Innsbruck', 'Austria'),
+(19,'Curanto', 'América','Español', '../../../assets/img/Bariloche.jpg', 'Nahuel Huapi', 'Bariloche', 'Argentina'),
+(20,'Raclette', 'Europa','Alemán', '../../../assets/img/interlaken.jpg', 'Höhematte Park', 'Interlaken', 'Suiza'),
+(21,'Poutine', 'América','Inglés', '../../../assets/img/banff.jpg', 'Upper Hot Springs', 'Banff', 'Canadá'),
+(22,'Raclette', 'Europa','Alemán', '../../../assets/img/zermatt.jpg', 'Ferrocarril de Gornergrat', 'Zermatt', 'Suiza'),
+(23,'Chiri Uchu', 'América','Español', '../../../assets/img/cusco.jpg', 'Saqsaywaman', 'Cusco', 'Perú'),
+(24,'Pionono', 'Europa','Español', '../../../assets/img/Granada.jpg', 'Alhambra', 'Granada', 'España'),
+(25,'Cuy al horno', 'América','Español', '../../../assets/img/MachuPicchu.jpg', 'Huayna Picchu', 'Machu Picchu', 'Perú'),
+(26,'La tartiflette', 'Europa','Francés', '../../../assets/img/Chamonix.jpg', 'Mont Blanc', 'Chamonix', 'Francia'),
+(27,'Hickory Burger', 'América','Inglés', '../../../assets/img/LosAngeles.jpg', 'Parque Griffith', 'Los Angeles', 'EE.UU'),
+(28,'Gnocchi','Europa','Italiano','../../../assets/img/roma.jpg', 'Palacio Barberini', 'Roma', 'Italia'),
+(29,'Poutine','América','Francés/Inglés', '../../../assets/img/toronto.jpg', 'Torre CN', 'Toronto', 'Canadá'),
+(30,'Eisbein','Europa','Alemania', '../../../assets/img/berlin.jpg', 'Puesta de Brandeburgo', 'Berlín', 'Alemania'),
+(31,'Chilaquiles','América','Español', '../../../assets/img/ciudadMexico.jpg', 'Coyoacán', 'Ciudad de México', 'México'),
+(32,'Cocido Madrileño','Europa','Castellano', '../../../assets/img/madrid.jpg', 'Palacio Real', 'Madrid', 'España'),
+(33,'Pizza', 'América','Inglés', '../../../assets/img/NuevaYork.jpg', 'Central Park', 'Nueva York', 'EE.UU'),
+(34,'Foie gra', 'Europa','Frances', '../../../assets/img/paris.jpg', 'Torre Eiffel', 'París', 'Francia'),
+(35,'Pargo Frito Y Griot','América','Inglés', '../../../assets/img/miami.jpg', 'Miami Beach', 'Miami', 'EE.UU'),
+(36,'Wiener Schnitzel','Europa','Alemán', '../../../assets/img/viena.jpg', 'Palacio de Schönbrunn', 'Viena', 'Austria'),
+(37,'Deep-dish Pizza','América','Inglés', '../../../assets/img/chicago.jpg', 'Cloud Gate', 'Chicago', 'EE.UU'),
+(38,'Fish & Chips','Europa','Inglés', '../../../assets/img/londres.jpg', 'Abadía Westminster', 'Londres', 'Reino Unido'),
+(39,'Roulottes','América','Francés', '../../../assets/img/BoraBora.jpg', 'Otemanu', 'Bora Bora', 'Polinesia Francesa'),
+(40,'El Mezze','Asia','Árabe', '../../../assets/img/dubai.jpg', 'Burj Al Arab', 'Dubái', 'Emiratos Árabes')
+```
