@@ -27,4 +27,5 @@ public class City {
     private String nombreHotel;
     private String descripcionHotel;
     private String imgHotel;
+    private String urlHotel;
 }
