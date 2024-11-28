@@ -24,4 +24,8 @@ public class City {
     private String lugarImperdible;
     private String comidaTipica;
     private String continente;
+    private String nombreHotel;
+    private String descripcionHotel;
+    private String imgHotel;
+    private String urlHotel;
 }
